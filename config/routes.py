@@ -1,9 +1,10 @@
 import os
 from app import app
-from controllers import auth, users
+from controllers import auth, users, recipes
 
 app.register_blueprint(auth.api, url_prefix='/api')
 app.register_blueprint(users.api, url_prefix='/api')
+app.register_blueprint(recipes.api, url_prefix='/api')
 
 @app.route('/', defaults={'path': ''}) # homepage
 @app.route('/<path:path>') # any other path

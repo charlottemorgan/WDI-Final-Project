@@ -1,20 +1,30 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+
+import 'bulma'
+
+import Home from './Home'
+import Login from './components/auth/Login'
+
 class App extends React.Component {
   constructor(){
     super()
-
-    this.state = {
-      title: 'HELLO WORLD!'
-    }
 
   }
 
 
   render(){
     return(
-      <h1>{this.state.title}</h1>
+      <BrowserRouter>
+        <main>
+          <Switch>
+            <Route path="/login" component={Login} />
+            <Route path="/" component={Home} />
+          </Switch>
+        </main>
+      </BrowserRouter>
     )
   }
 }
