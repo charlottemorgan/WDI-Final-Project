@@ -20,12 +20,21 @@ with app.app_context():
 
     db.session.add(admin)
 
-    chorizo_carbonara = Recipe(
-    name='Chorizo Carbonara',
-    ingredients='chorizo, spaghetti, eggs, parmesan',
-    method='fry the chorizo until crisp, cook the spaghetti, mix egg parmesan, serve',
-    time=30
-    )
-    db.session.add(chorizo_carbonara)
+    # all_recipes = requests.get('https://api.github.com/events').json()
+    # for each_recipe in all_recipes:
+    #     print(each_recipe['actor']['id'])
+
+        # print(each_recipe['strActor'] + ' ' + each_recipe['idActor']).json()
+        # each_recipe.save()
+
+    # print(all_recipes)
+
+    # chorizo_carbonara = Recipe(
+    # name='Chorizo Carbonara',
+    # ingredients='chorizo, spaghetti, eggs, parmesan',
+    # method='fry the chorizo until crisp, cook the spaghetti, mix egg parmesan, serve',
+    # time=30
+    # )
+    # db.session.add(chorizo_carbonara)
 
     db.session.commit()
