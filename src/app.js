@@ -7,6 +7,7 @@ import 'bulma'
 
 import Home from './Home'
 import Login from './components/auth/Login'
+import RecipesIndex from './components/RecipesIndex'
 
 class App extends React.Component {
   constructor(){
@@ -20,6 +21,7 @@ class App extends React.Component {
       <BrowserRouter>
         <main>
           <Switch>
+            <Route path="/recipes" component={RecipesIndex} />
             <Route path="/login" component={Login} />
             <Route path="/" component={Home} />
           </Switch>
