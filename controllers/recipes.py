@@ -12,20 +12,17 @@ recipes_schema = RecipeSchema(many=True, exclude=('recipes',))
 def index():
     recipes = requests.get(
     # pylint: disable=C0301
-    'https://api.edamam.com/search?q=chicken&app_id=bdd717ce&app_key=075f9092a26b6944bfecae528bcc34e4&from=0&to=3').json()
+    'https://api.edamam.com/search?q=&app_id=bdd717ce&app_key=075f9092a26b6944bfecae528bcc34e4&from=0&to=3&diet=&health=').json()
     # get user preferences from db
     # filter recipes according to preferences
     # return filtered list
     return jsonify(recipes)
 
-@api.route('/recipes/<int:recipe_id>', methods=['GET'])
-def show(recipe_id):
-    # recipe = Recipe.query.get(recipe_id)
-    # return recipe_schema.jsonify(recipe)
-
-    recipe = requests.get(f'https://api.github.com/events/{recipe_id}').json()
-
-    # recipe = Recipe(**respone)
+# @api.route('/recipes/<int:recipe_id>', methods=['GET'])
+# def show(recipe_id):
+    recipe = requests.get(f'https://api.edamam.com/search?q=chicken&app_id=bdd717ce&app_key=075f9092a26b6944bfecae528bcc34e4&from=0&to=3/{recipe_id}').json()
+    #
+    # recipe = Recipe(**response)
     # recipe.save()
-
-    return jsonify(recipe)
+    #
+    # return jsonify(recipe)

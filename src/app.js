@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import 'bulma'
+import './style.scss'
 
 import Home from './Home'
 import Login from './components/auth/Login'
