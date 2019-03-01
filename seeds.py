@@ -1,5 +1,6 @@
 from app import app, db
 from models.user import User, UserSchema
+from models.preference import Preference
 from models.recipe import Recipe
 
 user_schema = UserSchema()
@@ -8,9 +9,15 @@ with app.app_context():
     db.drop_all()
     db.create_all()
 
+    lowcarb = Preference(diet='low-carb')
+
     admin, errors = user_schema.load({
         'username': 'admin',
         'email': 'admin@admin.com',
+        'preference': {
+            'id': '1',
+            'diet': 'lowcarb'
+        },
         'password': 'admin123',
         'password_confirmation': 'admin123'
     })

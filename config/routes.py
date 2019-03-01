@@ -1,8 +1,9 @@
 import os
 from app import app
-from controllers import auth, users, recipes
+from controllers import auth, preferences, users, recipes
 
 app.register_blueprint(auth.api, url_prefix='/api')
+app.register_blueprint(preferences.api, url_prefix='/api')
 app.register_blueprint(users.api, url_prefix='/api')
 app.register_blueprint(recipes.api, url_prefix='/api')
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import qs from 'qs'
 
 class RecipesIndex extends React.Component {
   constructor() {
@@ -13,10 +14,20 @@ class RecipesIndex extends React.Component {
   }
 
   componentDidMount() {
-    axios
-      .get('/api/recipes', this.state.data)
+    const health = this.props.location.state.health
+    const diet = this.props.location.state.diet
+    axios.get('/api/recipes', {
+      params: { health, diet },
+      paramsSerializer: (params) => qs.stringify(params, {arrayFormat: 'repeat'})
+    })
       .then(res => this.setState({ recipes: res.data }))
+    console.log(this.state)
   }
+  // componentDidMount() {
+  //   axios
+  //     .get('/api/recipes', this.state.data)
+  //     .then(res => this.setState({ recipes: res.data }))
+  // }
 
   render() {
     console.log(this.state)
