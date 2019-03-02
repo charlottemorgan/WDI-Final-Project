@@ -1,14 +1,18 @@
 import React from 'react'
 import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated'
-import axios from 'axios'
-import qs from 'qs'
 import { Link } from 'react-router-dom'
+
+// import axios from 'axios'
+//
+// import qs from 'qs'
 
 import Register from './components/auth/Register'
 import DietLabels from './components/common/DietLabels'
 import HealthLabels from './components/common/HealthLabels'
 
+
+// axios.defaults.headers.common = {'Authorization': `bearer ${'hello'}`}
 
 class Home extends React.Component{
   constructor() {
@@ -30,8 +34,14 @@ class Home extends React.Component{
 
   handleSubmit(e) {
     e.preventDefault()
+    // // const token = 'hello' //get this from local storage
+    // const { health, diet } = this.state
+    // axios.post('/api/users/setpreferences', {
+    //   // headers: {'Authorization': `bearer + ${token}`},
+    //   params: { health, diet },
+    //   paramsSerializer: (params) => qs.stringify(params, {arrayFormat: 'repeat'})
+    // })
   }
-
 
 
 
@@ -39,7 +49,7 @@ class Home extends React.Component{
     return(
       <div className="hero">
         <div className="container">
-
+          <Register />
           <div className="field has-addons">
             <div className="control is-expanded drop_down">
               <Select
@@ -80,5 +90,7 @@ class Home extends React.Component{
     )
   }
 }
+
+
 
 export default Home

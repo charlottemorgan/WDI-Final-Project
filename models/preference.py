@@ -6,7 +6,8 @@ class Preference(db.Model, BaseModel):
 
     __tablename__ = 'preferences'
 
-    diet = db.Column(db.String(80), nullable=False)
+    type = db.Column(db.String(80), nullable=False)
+    value = db.Column(db.String(80), nullable=False)
 
 
 class PreferenceSchema(ma.ModelSchema, BaseSchema):

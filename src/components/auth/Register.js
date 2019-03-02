@@ -21,10 +21,7 @@ class Register extends React.Component {
   }
 
   toggleModal() {
-    this.setState((prev, props) => {
-      const newState = !prev.modalState
-      return { modalState: newState }
-    })
+    this.setState({modalState: !this.state.modalState})
   }
 
   handleChange({target: {name, value }}) {
@@ -43,7 +40,7 @@ class Register extends React.Component {
 
   render() {
     return (
-      <div className="modal is-active">
+      <div className={`modal ${this.state.modalState ? 'is-active' : ''}`} >
         <div className="modal-background"></div>
         <div className="modal-content">
           <div className="container">

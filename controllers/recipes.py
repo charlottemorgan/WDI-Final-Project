@@ -11,14 +11,20 @@ recipes_schema = RecipeSchema(many=True, exclude=('recipes',))
 @api.route('/recipes', methods=['GET'])
 def index():
 
+    diet = request.args.get('diet')
+    # used to be request.args.get('diet') - we will now get it from the user database
+    health = request.args.get('health')
+    # used to be request.args.get('health') - we will now get it from the user
+
+
     params = {
         'q': '',
         'app_id': os.getenv('EDAMAM_APP_ID'),
         'app_key': os.getenv('EDAMAM_APP_KEY'),
         'from': 0,
-        'to': 3,
-        'diet': request.args.get('diet'),
-        'health': request.args.get('health')
+        'to': 30,
+        'diet':  diet,
+        'health': health
     }
     print(params)
 

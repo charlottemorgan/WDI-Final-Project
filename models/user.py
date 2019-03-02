@@ -33,7 +33,10 @@ class User(db.Model, BaseModel):
         payload = {
             'exp': datetime.utcnow() + timedelta(days=1),
             'iat': datetime.utcnow(),
-            'sub': self.id
+            'sub': self.id,
+            'username': self.username,
+            'email': self.email,
+            'preferences': self.preference
         }
 
         token = jwt.encode(

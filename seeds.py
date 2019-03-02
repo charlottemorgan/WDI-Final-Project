@@ -14,10 +14,11 @@ with app.app_context():
     admin, errors = user_schema.load({
         'username': 'admin',
         'email': 'admin@admin.com',
-        'preference': {
+        'preferences': [{
             'id': '1',
-            'diet': 'lowcarb'
-        },
+            'type': 'diet',
+            'value': 'lowcarb'
+        }],
         'password': 'admin123',
         'password_confirmation': 'admin123'
     })

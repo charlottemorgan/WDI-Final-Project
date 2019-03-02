@@ -14,20 +14,14 @@ class RecipesIndex extends React.Component {
   }
 
   componentDidMount() {
-    const health = this.props.location.state.health
-    const diet = this.props.location.state.diet
+    const { health, diet } = this.props.location.state
     axios.get('/api/recipes', {
       params: { health, diet },
       paramsSerializer: (params) => qs.stringify(params, {arrayFormat: 'repeat'})
     })
       .then(res => this.setState({ recipes: res.data }))
-    console.log(this.state)
   }
-  // componentDidMount() {
-  //   axios
-  //     .get('/api/recipes', this.state.data)
-  //     .then(res => this.setState({ recipes: res.data }))
-  // }
+
 
   render() {
     console.log(this.state)
@@ -36,11 +30,11 @@ class RecipesIndex extends React.Component {
       <section className="section">
         <h2 className="title is-1">Recipes</h2>
         <div className="container">
-          <div className="columns is-multiline">
+          <div className="columns is-multiline is-mobile">
             {this.state.recipes.hits.map((hit, i) =>
-              <div className="column is-one-quarter" key={i}>
-                <h2 className="title">{hit.recipe.label}</h2>
-                <p>{hit.recipe.ingredientLines}</p>
+              <div className="column is-four-fifths front" key={i}>
+                <figure className="image" style={{ backgroundImage: `url(${hit.recipe.image})`}} />
+                <div className="text-overlay">{hit.recipe.label}</div>
               </div>
             )}
           </div>
