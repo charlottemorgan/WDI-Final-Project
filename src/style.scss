@@ -15,7 +15,6 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
-  width: 75vw;
 }
 
 .text-overlay {
@@ -59,7 +58,7 @@ section.hero {
   text-align: center;
 }
 
-div.column.is-half {
+.show-columns {
   background: black;
   color: white;
   border-radius: 5px;

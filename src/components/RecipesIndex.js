@@ -52,17 +52,16 @@ class RecipesIndex extends React.Component {
           <div className="columns is-multiline">
 
             {this.state.recipes.hits.map((hit, i) =>{
-              return <Link to ={{
-                pathname: `/recipes/${hit.recipe.label.split(' ').join('')}`,
-                state: { recipe: hit.recipe }
-
-              }}
-              key={i}>
-                <div className="column is-three-fifths is-offset-one-fifth front"
-                  style={{ backgroundImage: `url(${hit.recipe.image})`}}>
-                  <div className="text-overlay">{hit.recipe.label}</div>
-                </div>
-
+              return <Link
+                to={{
+                  pathname: `/recipes/${hit.recipe.label.split(' ').join('')}`,
+                  state: { recipe: hit.recipe }
+                }}
+                className="column is-three-fifths is-offset-one-fifth front"
+                style={{ backgroundImage: `url(${hit.recipe.image})`}}
+                key={i}
+              >
+                <div className="text-overlay">{hit.recipe.label}</div>
               </Link>
             }
             )}

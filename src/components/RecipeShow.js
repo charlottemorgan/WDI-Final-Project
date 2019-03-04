@@ -106,7 +106,7 @@ class RecipeShow extends React.Component {
         <div className="container">
           <button className="button" onClick={this.handleSubmit}> Add to shopping list</button>
           <div className="columns is-multiline">
-            <div className="column is-half">
+            <div className="column is-full show-columns">
               <h4 className="title">Ingredients</h4>
               <ul id="ingredientList">
                 {this.state.recipe.ingredients.map((ingredient, i) =>
@@ -114,14 +114,10 @@ class RecipeShow extends React.Component {
                 )}
               </ul>
             </div>
-            <div className="column is-half">
+            <div className="column is-full show-columns">
               <h5 className="title">Cooking Time:</h5><p>{this.state.recipe.totalTime} minutes</p>
             </div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="columns is-multiline">
-            <div className="column is-half">
+            <div className="column is-full show-columns">
               <h5 className="title">Nutrition:</h5>
               <ul><li>Calories:{Math.round(this.state.recipe.calories)}</li></ul>
               <ul id="nutritionList">
@@ -130,12 +126,17 @@ class RecipeShow extends React.Component {
                 )}
               </ul>
             </div>
-            <div className="column is-half">
+            <div className="column is-full show-columns">
               <h5 className="title">Source:</h5><p>{this.state.recipe.source}</p>
               <a href={this.state.recipe.url}>
                 <button className="button">See full method</button>
               </a>
             </div>
+          </div>
+        </div>
+        <div className="container">
+          <div className="columns is-multiline is-variable is-4">
+
           </div>
         </div>
       </div>
