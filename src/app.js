@@ -31,8 +31,9 @@ class App extends React.Component {
             <Route path="/recipes/:id" component={RecipeShow} />
             <Route path="/recipes" component={RecipesIndex} />
             <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
             <Route path="/preferences" component={Home} />
-            <Route path="/" component={Register} />
+            <Route path="/" component={Home} />
           </Switch>
         </main>
       </BrowserRouter>

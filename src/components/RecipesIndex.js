@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {Fragment} from 'react'
 import axios from 'axios'
 import qs from 'qs'
 
@@ -11,23 +11,39 @@ class RecipesIndex extends React.Component {
     this.state = {
       recipes: {
         hits: []
-      }
+      },
+      loading: true
     }
   }
 
   componentDidMount() {
-    const { health, diet } = this.props.location.state
+    const health = window.localStorage.getItem('health').split(',')
+    const diet = window.localStorage.getItem('diet').split(',')
+    console.log('HHEALTH  AND DIET', health, diet)
     axios.get('/api/recipes', {
       params: { health, diet },
       paramsSerializer: (params) => qs.stringify(params, {arrayFormat: 'repeat'})
     })
-      .then(res => this.setState({ recipes: res.data }))
+      .then(res => {
+        if (res) this.setState({ recipes: res.data, loading: false })
+      }).catch(e => {
+        console.log('error',e)
+        this.setState({noRecipesFound: true, loading: false})
+      })
   }
 
 
   render() {
     console.log('STATE',this.state)
-    if(!this.state.recipes.hits.length) return <h1 className="title">Loading...</h1>
+    if(this.state.loading) return <h1 className="title">Loading...</h1>
+    if(this.state.noRecipesFound) {
+      return (
+        <Fragment>
+          <h1 className='title'>No recipes found for this combination</h1>
+          <Link className='button' to={{pathname: '/'}}>Choose new preferences</Link>
+        </Fragment>
+      )
+    }
 
     return(
       <section className="section">

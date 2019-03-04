@@ -38,7 +38,7 @@ class User(db.Model, BaseModel):
             'sub': self.id,
             'username': self.username,
             'email': self.email,
-            'preferences': self.preference
+            
         }
 
         token = jwt.encode(

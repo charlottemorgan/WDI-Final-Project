@@ -17,6 +17,7 @@ class Home extends React.Component{
     }
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
+    this.savePreferences = this.savePreferences.bind(this)
   }
 
   handleChange(value, input) {
@@ -36,7 +37,13 @@ class Home extends React.Component{
     // })
   }
 
-
+  savePreferences() {
+    const {health, diet} = this.state
+    // save to local storage
+    window.localStorage.setItem('health', health)
+    window.localStorage.setItem('diet', diet)
+    console.log('preferences set to localStorage')
+  }
 
   render() {
     return(
@@ -69,12 +76,15 @@ class Home extends React.Component{
                 placeholder="Health Requirements"
                 onChange={(value,input) => this.handleChange(value,input)}
               />
-              <Link to ={{
-                pathname: '/recipes',
-                state: { health: this.state.health, diet: this.state.diet }
-              }}>
+              <Link
+                to ={{
+                  pathname: '/recipes'
+                }}
+                onClick={() => this.savePreferences()}
+              >
                 <h2>Show recipes</h2>
               </Link>
+              <button className='button' onClick={() => this.savePreferences()}>TEST</button>
             </div>
           </div>
         </div>

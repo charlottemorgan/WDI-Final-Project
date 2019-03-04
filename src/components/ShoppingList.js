@@ -32,7 +32,7 @@ class ShoppingList extends React.Component {
             <li key={i}>{item.name}</li>
           )}
         </ul>
-        <Link to='/preferences'>
+        <Link to='/recipes'>
           <button className="button">Back to recipes</button>
         </Link>
       </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import Auth from '../lib/Auth'
 
 
@@ -88,6 +88,7 @@ class RecipeShow extends React.Component {
 
   render() {
     if (!this.state) return <p>Loading...</p>
+    if (!Auth.isAuthenticated()) return <Redirect to={{pathname: '/login'}}/>
     console.log(this.state)
     return(
       <div>
