@@ -25,3 +25,23 @@
 .front {
   position: relative;
 }
+
+section.hero {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50% 20%;
+
+  div.hero-body {
+    // background: linear-gradient(transparent 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.5) 90%);
+
+    h1{
+      font-size: 3em;
+    }
+  }
+}
+
+ul {
+  display: list-item;
+  list-style-type: circle;
+}

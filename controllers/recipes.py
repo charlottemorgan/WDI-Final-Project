@@ -41,9 +41,27 @@ def index():
 
 # @api.route('/recipes/<int:recipe_id>', methods=['GET'])
 # def show(recipe_id):
-    # recipe = requests.get(f'https://api.edamam.com/search?q=chicken&app_id=bdd717ce&app_key=075f9092a26b6944bfecae528bcc34e4&from=0&to=3/{recipe_id}').json()
-    #
-    # recipe = Recipe(**response)
-    # recipe.save()
-    #
-    # return jsonify(recipe)
+#     diet = request.args.get('diet')
+#     # used to be request.args.get('diet') - we will now get it from the user database
+#     health = request.args.get('health')
+#     # used to be request.args.get('health') - we will now get it from the user
+#
+#
+#     params = {
+#         'q': '',
+#         'app_id': os.getenv('EDAMAM_APP_ID'),
+#         'app_key': os.getenv('EDAMAM_APP_KEY'),
+#         'from': 0,
+#         'to': 30,
+#         'diet':  diet,
+#         'health': health,
+#         'recipe_id': recipe_id
+#     }
+#
+#     try:
+#         recipe = requests.get('https://api.edamam.com/search', params=params).json()
+#         return jsonify(recipe)
+#
+#     # pylint: disable=W0703
+#     except Exception:
+#         return jsonify({'message':'No recipes found'}), 404
