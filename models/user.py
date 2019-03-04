@@ -14,8 +14,8 @@ class User(db.Model, BaseModel):
 
     username = db.Column(db.String(20), nullable=False, unique=True)
     email = db.Column(db.String(128), nullable=True, unique=True)
-    preference_id = db.Column(db.Integer, db.ForeignKey('preferences.id'))
-    preference = db.relationship('Preference', backref='users')
+    # preference_id = db.Column(db.Integer, db.ForeignKey('preferences.id'))
+    # preference = db.relationship('Preference', backref='users')
     password_hash = db.Column(db.String(128), nullable=True)
     list = db.relationship('Item', backref='user')
 
@@ -52,7 +52,7 @@ class User(db.Model, BaseModel):
 
 class UserSchema(ma.ModelSchema, BaseSchema):
 
-    preference = fields.Nested('PreferenceSchema', only=('diet', 'id'))
+    # preference = fields.Nested('PreferenceSchema', only=('diet', 'id'))
     list = fields.Nested('ItemSchema', many=True)
 
     @validates_schema

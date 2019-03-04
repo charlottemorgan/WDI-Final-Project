@@ -11,6 +11,8 @@ import RecipesIndex from './components/RecipesIndex'
 import RecipeShow from './components/RecipeShow'
 import ShoppingList from './components/ShoppingList'
 import Register from './components/auth/Register'
+import SecureRoute from './components/common/SecureRoute'
+import FlashMessage from './components/common/FlashMessage'
 
 class App extends React.Component {
   constructor(){
@@ -23,8 +25,9 @@ class App extends React.Component {
     return(
       <BrowserRouter>
         <main>
+          <FlashMessage/>
           <Switch>
-            <Route path="/list" component={ShoppingList} />
+            <SecureRoute path="/profile" component={ShoppingList} />
             <Route path="/recipes/:id" component={RecipeShow} />
             <Route path="/recipes" component={RecipesIndex} />
             <Route path="/login" component={Login} />

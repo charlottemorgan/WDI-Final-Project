@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import Auth from '../lib/Auth'
 
 
 
@@ -10,8 +11,10 @@ class RecipeShow extends React.Component {
     super(props)
     this.state = {
       recipe: props.location.state.recipe,
-      amazonFreshHtml: {__html: ''}
+      amazonFreshHtml: {__html: ''},
+      user: {}
     }
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   extractIngredientJsonFromRecipe(recipe) {
@@ -59,10 +62,32 @@ class RecipeShow extends React.Component {
 
   }
 
+  componentDidMount() {
+    axios('/api/me', {
+      headers: { Authorization: `Bearer ${Auth.getToken()}` }
+    })
+      .then(res => this.setState({ user: res.data }))
+  }
+
+  handleSubmit(e){
+    e.preventDefault()
+    const { user, recipe } = this.state
+    const ingredients = recipe.ingredients.map(ingredient => ({ name: ingredient.text }))
+    const dataToSend = {
+      ...user,
+      list: user.list.concat(ingredients)
+    }
+    axios
+      .put('/api/me', dataToSend, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
+      .then(() => this.props.history.push('/profile'))
+  }
 
 
 
   render() {
+    if (!this.state) return <p>Loading...</p>
     console.log(this.state)
     return(
       <div>
@@ -78,12 +103,7 @@ class RecipeShow extends React.Component {
           </div>
         </section>
         <div className="container">
-          <Link to ={{
-            pathname: '/list',
-            state: { ingredients: this.state.recipe.ingredients }
-          }}>
-            <button className="button"> Add to shopping list</button>
-          </Link>
+          <button className="button" onClick={this.handleSubmit}> Add to shopping list</button>
           <div className="columns is-multiline">
             <div className="column is-half">
               <h4 className="title">Ingredients</h4>

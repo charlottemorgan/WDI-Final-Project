@@ -38,3 +38,21 @@ def login():
 def me():
 
     return user_schema.jsonify(g.current_user)
+
+
+@api.route('/me', methods=['PUT'])
+@secure_route
+def update():
+
+    user, errors = user_schema.load(
+        request.get_json(),
+        instance=g.current_user,
+        partial=True
+    )
+
+    if errors:
+        return jsonify(errors), 422
+
+    user.save()
+
+    return user_schema.jsonify(user)
