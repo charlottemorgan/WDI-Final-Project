@@ -57,8 +57,6 @@ class RecipeShow extends React.Component {
       this.setState({amazonFreshHtml: {__html: res.data}}, () => console.log('STATE NOW', this.state))
     })
 
-
-    // https://www.amazon.com/afx/ingredients/landingencoded?encodedIngredients=H4sIAAAAAAAAAJWOvQrCQBCEX2XZ-pT4B8ZOLEQ0CFpKiiW35A7Mnu5dCgl5d08Le7uZ4WNmBvTSKlvPkiJubgMKdYwbXELopeEIrVJiCw_SjiOJgYqkcdwGAzvH1pIaCAohOVZwpPbjInd-8jUZ5cho8NmTJJ9eJx_Td6gXnwUeD6fz_rKtrpmhLo_msJjOZotFuS7K-WqsR_N7tYYmqEAKmvz9TvH_3nKeC-vxDXC4jgr4AAAA
   }
 
 
@@ -79,7 +77,6 @@ class RecipeShow extends React.Component {
             </div>
           </div>
         </section>
-
         <div className="container">
           <Link to ={{
             pathname: '/list',
@@ -87,7 +84,7 @@ class RecipeShow extends React.Component {
           }}>
             <button className="button"> Add to shopping list</button>
           </Link>
-          <div className="columns">
+          <div className="columns is-multiline">
             <div className="column is-half">
               <h4 className="title">Ingredients</h4>
               <ul id="ingredientList">
@@ -102,7 +99,7 @@ class RecipeShow extends React.Component {
           </div>
         </div>
         <div className="container">
-          <div className="columns">
+          <div className="columns is-multiline">
             <div className="column is-half">
               <h5 className="title">Nutrition:</h5>
               <ul><li>Calories:{Math.round(this.state.recipe.calories)}</li></ul>
@@ -131,32 +128,3 @@ export default RecipeShow
 // <button className="button" onClick={() => this.extractIngredientJsonFromRecipe(recipe)}>TEST JSON EXTRACTOR</button>
 // <button className="button" onClick={() => this.testRequest(recipe)}>TEST FRESH REQUEST</button>
 // <div dangerouslySetInnerHTML={this.state.amazonFreshHtml}></div>
-
-// <section className="section">
-//   <div className="container">
-//     <h2 className="title">Artist Bio</h2>
-//     <div className="content">{this.killATag()}</div>
-//     <h2 className="title">Top Albums</h2>
-//     <div className="columns is-multiline">
-//       {this.state.albums.map((album, index) =>
-//         <Link key={index} to={`/${this.title}/${album.mbid}`} className="column is-one-third album">
-//           <h2 className="subtitle is-3">{album.name}</h2>
-//           <div className="albumDiv">
-//             <img src={album.image[3]['#text']} alt={album.name} />
-//           </div>
-//         </Link>
-//       )}
-//     </div>
-//   </div>
-// </section>
-// <div className="container">
-//   <h2 className="title is-1">Similar Artists</h2>
-// </div>
-// <ul id="searchResultList">
-//   {this.state.artistInfo.artist.similar.artist.map((artist, i) =>
-//     <Link key={i} to={`/${artist.name}`} onClick={this.getData}>
-//       <li id={`a${i}`}>{artist.name}</li>
-//     </Link>
-//   )}
-// </ul>
-// </div>

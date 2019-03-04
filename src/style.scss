@@ -1,11 +1,17 @@
+$column-gap: 1.25em;
+
+@import "~bulma/bulma";
+
 .drop_down {
   margin-top: 100px;
 }
 body {
   background-color: black;
+  min-height: 100vh;
+  min-width: 100vw;
 }
 
-.image {
+.column.is-three-fifths {
   background-repeat: no-repeat;
   background-size: cover;
   height: 20vh;
@@ -56,7 +62,6 @@ section.hero {
 div.column.is-half {
   background: black;
   color: white;
-  margin: 1.25em;
   border-radius: 5px;
   border: 3px solid white;
 }
@@ -79,4 +84,8 @@ button.button {
 
 li {
   color: white;
+}
+
+figure.image {
+  border-radius: 5px;
 }

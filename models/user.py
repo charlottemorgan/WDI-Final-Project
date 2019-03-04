@@ -6,6 +6,7 @@ from sqlalchemy.ext.hybrid import hybrid_property
 from marshmallow import validates_schema, ValidationError, fields, validate
 from .preference import Preference, PreferenceSchema
 from .base import BaseModel, BaseSchema
+from .item import ItemSchema
 
 class User(db.Model, BaseModel):
 
@@ -16,6 +17,7 @@ class User(db.Model, BaseModel):
     preference_id = db.Column(db.Integer, db.ForeignKey('preferences.id'))
     preference = db.relationship('Preference', backref='users')
     password_hash = db.Column(db.String(128), nullable=True)
+    list = db.relationship('Item', backref='user')
 
     @hybrid_property
     def password(self):
@@ -51,6 +53,7 @@ class User(db.Model, BaseModel):
 class UserSchema(ma.ModelSchema, BaseSchema):
 
     preference = fields.Nested('PreferenceSchema', only=('diet', 'id'))
+    list = fields.Nested('ItemSchema', many=True)
 
     @validates_schema
     # pylint: disable=R0201

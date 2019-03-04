@@ -33,7 +33,7 @@ class RecipesIndex extends React.Component {
       <section className="section">
         <h2 className="title is-1">Recipes</h2>
         <div className="container">
-          <div className="columns is-multiline is-mobile">
+          <div className="columns is-multiline">
 
             {this.state.recipes.hits.map((hit, i) =>{
               return <Link to ={{
@@ -42,12 +42,13 @@ class RecipesIndex extends React.Component {
 
               }}
               key={i}>
-                <div className="column is-four-fifths front" >
-                  <figure className="image" style={{ backgroundImage: `url(${hit.recipe.image})`}} />
+                <div className="column is-three-fifths is-offset-one-fifth front"
+                  style={{ backgroundImage: `url(${hit.recipe.image})`}}>
                   <div className="text-overlay">{hit.recipe.label}</div>
                 </div>
 
-              </Link>}
+              </Link>
+            }
             )}
           </div>
         </div>

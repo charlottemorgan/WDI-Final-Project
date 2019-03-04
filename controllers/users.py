@@ -1,5 +1,6 @@
-from flask import Blueprint, jsonify, request, g
+from flask import Blueprint, jsonify, request
 import jwt
+from lib.secure_route import secure_route
 from models.user import UserSchema, User
 
 api = Blueprint('user', __name__)
@@ -18,7 +19,7 @@ def show(user_id):
 
 @api.route('/users/setpreferences', methods=['POST'])
 def edit():
-    print('I AM BEING HIT')
+    print('REACHING HERE')
 
     # GET PREFERENCES AND SHAPE DATA
     diet = request.args.get('diet')

@@ -3,16 +3,9 @@ import Select from 'react-select'
 import makeAnimated from 'react-select/lib/animated'
 import { Link } from 'react-router-dom'
 
-// import axios from 'axios'
-//
-// import qs from 'qs'
-
-import Register from './components/auth/Register'
 import DietLabels from './components/common/DietLabels'
 import HealthLabels from './components/common/HealthLabels'
 
-
-// axios.defaults.headers.common = {'Authorization': `bearer ${'hello'}`}
 
 class Home extends React.Component{
   constructor() {
