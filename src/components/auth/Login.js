@@ -23,7 +23,7 @@ class Login extends React.Component {
       .post('/api/login', this.state.data)
       .then((res) => {
         Auth.setToken(res.data.token)
-        // this.props.history.push('/home')
+        this.props.history.push('/preferences')
       })
   }
 

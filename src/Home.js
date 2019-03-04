@@ -49,7 +49,6 @@ class Home extends React.Component{
     return(
       <div className="hero">
         <div className="container">
-          <Register />
           <div className="field has-addons">
             <div className="control is-expanded drop_down">
               <Select

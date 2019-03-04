@@ -81,6 +81,12 @@ class RecipeShow extends React.Component {
         </section>
 
         <div className="container">
+          <Link to ={{
+            pathname: '/list',
+            state: { ingredients: this.state.recipe.ingredients }
+          }}>
+            <button className="button"> Add to shopping list</button>
+          </Link>
           <div className="columns">
             <div className="column is-half">
               <h4 className="title">Ingredients</h4>

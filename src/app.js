@@ -10,6 +10,8 @@ import Home from './Home'
 import Login from './components/auth/Login'
 import RecipesIndex from './components/RecipesIndex'
 import RecipeShow from './components/RecipeShow'
+import ShoppingList from './components/ShoppingList'
+import Register from './components/auth/Register'
 
 class App extends React.Component {
   constructor(){
@@ -23,10 +25,12 @@ class App extends React.Component {
       <BrowserRouter>
         <main>
           <Switch>
+            <Route path="/list" component={ShoppingList} />
             <Route path="/recipes/:id" component={RecipeShow} />
             <Route path="/recipes" component={RecipesIndex} />
             <Route path="/login" component={Login} />
-            <Route path="/" component={Home} />
+            <Route path="/preferences" component={Home} />
+            <Route path="/" component={Register} />
           </Switch>
         </main>
       </BrowserRouter>
