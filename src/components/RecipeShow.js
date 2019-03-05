@@ -87,7 +87,7 @@ class RecipeShow extends React.Component {
 
 
   render() {
-    if (!this.state) return <p>Loading...</p>
+    if (!this.state) return <h3 className="title">Loading...</h3>
     if (!Auth.isAuthenticated()) return <Redirect to={{pathname: '/login'}}/>
     console.log(this.state)
     return(
@@ -97,7 +97,7 @@ class RecipeShow extends React.Component {
         <section className="hero is-large" style={
           { backgroundImage: `url(${this.state.recipe.image})`}
         }>
-          <div className="hero-body">
+          <div className="hero-body show">
             <div className="container">
               <h1 className="recipe-title">{this.state.recipe.label}</h1>
             </div>

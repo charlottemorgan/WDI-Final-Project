@@ -36,10 +36,11 @@ class Login extends React.Component {
 
   render() {
     return(
+      <div className="container">
       <div className="columns">
         <div className="column">
           <form onSubmit={this.handleSubmit}>
-            <h2 className="title">Login</h2>
+            <h2 className="title form">Login</h2>
             <div className="field">
               <label className="label">Email</label>
               <input
@@ -64,6 +65,7 @@ class Login extends React.Component {
             <button className="button">Log in</button>
             <Link to={{pathname: '/register'}}><button className="button">Register</button></Link>
           </form>
+        </div>
         </div>
       </div>
 

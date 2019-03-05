@@ -13,12 +13,40 @@ body {
   font-family: 'Staatliches', cursive;
 }
 
+.navbar {
+  background-color: black;
+  font-size: 25px;
+  border-bottom: 3px solid white;
+}
+
+a.navbar-item {
+  color: white;
+
+  &:hover {
+  background: black;
+  color: grey;
+  }
+}
+
+label.label {
+  color: white;
+  font-size: 1.15rem;
+}
+
+form.register {
+  padding-top: 4em;
+}
+strong {
+  font-size: 35px;
+}
+
 .column.is-three-fifths {
   background-repeat: no-repeat;
   background-size: cover;
   height: 25vh;
   border-radius: 5px;
   margin-bottom: 1.5em;
+  border: 6px solid white;
 }
 
 .text-overlay {
@@ -38,6 +66,10 @@ body {
   position: relative;
 }
 
+.hero-body.show {
+  border-bottom: 4px solid white;
+}
+
 section.hero {
   background-repeat: no-repeat;
   background-size: cover;
@@ -48,7 +80,7 @@ section.hero {
     // background: linear-gradient(transparent 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.5) 90%);
 
     h1{
-      font-size: 5em;
+      font-size: 4.75em;
       color: white;
       text-shadow: 2px 2px 5px black;
     }
@@ -81,6 +113,8 @@ button.button {
   border: 3px solid white;
   font-size: 20px;
   margin-top: 2em;
+  margin-left: 2px;
+  margin-right: 2px;
   padding-bottom: 2em;
   font-family: 'Staatliches', cursive;
 }
@@ -107,4 +141,17 @@ figure.image {
 h1.title {
   font-size: 100px;
   margin-top: -1em;
+}
+
+.title.is-1 {
+  text-align: center;
+  font-size: 4em;
+}
+
+h2.title.form {
+  font-size: 3em;
+}
+
+h3 {
+  font-size: 10em;
 }
