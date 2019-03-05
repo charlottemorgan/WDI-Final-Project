@@ -45,7 +45,13 @@ class ShoppingList extends React.Component {
       <div className="container">
         <ul id="shoppingList">
           {this.state.user.list.map((item, i) =>
-            <li onClick ={() => this.itemChecked(item)} key={i}>{item.name}</li>
+            <li
+              onClick ={() => this.itemChecked(item)}
+              key={i}
+              className={`${ this.state.user.list[i].checked ? 'checked':''}`}
+            >
+              {item.name}
+            </li>
           )}
         </ul>
         <Link to='/recipes'>
