@@ -156,6 +156,7 @@ li.list {
   border-bottom: 1px solid white;
   padding: 10px;
   background: black;
+  border-radius: 0px;
 }
 
 li.ingredients {
@@ -201,7 +202,8 @@ figure.image {
 
 h1.title {
   font-size: 100px;
-  margin-top: -1em;
+  top: -11vh;
+  position: relative;
 }
 
 .title.is-1 {
@@ -229,8 +231,36 @@ h3.title.loading {
   font-size: 3em;
 }
 
+div.no-combo-container {
+  text-align: center;
+  top: 35vh;
+  position: relative;
+}
+
+h3.need-it {
+  font-size: 3em;
+  color: white;
+  text-decoration: underline;
+  font-family: 'Staatliches', sans-serif;
+}
+h3.got-it {
+  font-size: 3em;
+  color: white;
+  text-decoration: underline;
+  font-family: 'Staatliches', sans-serif;
+  padding-top: 15px;
+}
+
+.dark-toast {
+  background-color: white;
+  color: black;
+  font-size: 2em;
+  font-family: 'Staatliches', sans-serif;
+  border-radius: 5px;
+}
+
 @media only screen and (max-width: 769px){
   div.text-overlay {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 }

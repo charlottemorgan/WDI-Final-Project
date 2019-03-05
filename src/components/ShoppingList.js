@@ -3,6 +3,7 @@ import axios from 'axios'
 import Auth from '../lib/Auth'
 
 import { Link } from 'react-router-dom'
+import { ToastContainer, toast } from 'react-toastify'
 
 
 class ShoppingList extends React.Component {
@@ -20,48 +21,66 @@ class ShoppingList extends React.Component {
       headers: { Authorization: `Bearer ${Auth.getToken()}` }
     })
       .then(res => {
-        this.setState({ user: res.data })
+        this.setState({ user: {...res.data, listChecked: [], listUnchecked: res.data.list} })
       })
   }
 
   itemChecked(item) {
+    const { list } = this.state.user
     const index = this.state.user.list.indexOf(item)
     const toggleItem = { ...item, checked: !item.checked }
-    const list = [
-      ...this.state.user.list.slice(0, index),
+
+    const newList = [
+      ...list.slice(0, index),
       toggleItem,
-      ...this.state.user.list.slice(index+1)
+      ...list.slice(index+1)
     ]
-    const listSorted = list.sort((a , b) => {
-      if(a.checked && !b.checked) return 1
-      if(!a.checked && b.checked) return -1
-      return 0
-    })
-    const user = { ...this.state.user, list: listSorted }
+
+    const listUnchecked = newList.filter(item => !item.checked)
+    const listChecked = newList.filter(item => item.checked)
+    const user = { ...this.state.user, list: newList, listChecked, listUnchecked }
+    toast.success(`${!item.checked ? 'Got It!' : 'Need It!'}`)
     this.setState({ user })
   }
 
 
   render() {
-    if(!this.state.user) return false
+    const { user } = this.state
+    if(!user) return false
     return (
       <div className="container list">
         <h2 className="title is-1">List</h2>
         <ul id="shoppingList">
-          {this.state.user.list.map((item, i) =>
+          <h3 className="need-it">Need It</h3>
+          {user.listUnchecked.map((item, i) =>
             <li
-              className={`${ this.state.user.list[i].checked ? 'checked':''} list`}
+              className={'list'}
               key={i}>{item.name}
               <div
                 onClick ={() => this.itemChecked(item)}
                 key={i}
-                className={`${ this.state.user.list[i].checked ? 'checked':''} box`}></div>
+                className={'box'}></div>
+            </li>
+          )}
+        </ul>
+        <ul id="shoppingList">
+          <h3 className="got-it">Got It</h3>
+          {user.listChecked.map((item, i) =>
+            <li
+              className={'checked list'}
+              key={i}>{item.name}
+              <div
+                onClick ={() => this.itemChecked(item)}
+                key={i}
+                className={'checked box'}></div>
             </li>
           )}
         </ul>
         <Link to='/recipes'>
           <button className="button">Back to recipes</button>
         </Link>
+        <ToastContainer position='bottom-right' hideProgressBar={true} autoClose={2000}
+          toastClassName="dark-toast"/>
       </div>
 
 

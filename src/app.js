@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import 'react-toastify/dist/ReactToastify.css'
 
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
