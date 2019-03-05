@@ -144,17 +144,34 @@ h2.button {
 li {
   color: white;
   font-size: 1.25em;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid white;
+  padding: 10px;
 }
 
 li.checked {
   text-decoration: line-through;
   font-style: italic;
   color: grey;
+}
 
+div.checked.box {
+  background: url('https://uploads-ssl.webflow.com/5a3af8673a55f30001c3a63a/5b3d80bb79d147671beb1796_458595.png');
+  background-size: contain;
 }
 
 li:hover {
   cursor: cell;
+}
+
+div.box {
+  height: 10px;
+  width: 10px;
+  background: black;
+  border: 3px solid white;
+  padding: 10px;
+
 }
 
 p {

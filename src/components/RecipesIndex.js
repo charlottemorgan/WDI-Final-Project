@@ -35,7 +35,7 @@ class RecipesIndex extends React.Component {
 
   render() {
     console.log('STATE',this.state)
-    if(this.state.loading) return <h3 className="title loading">Loading...</h3>
+    if(this.state.loading) return <h3 className="title loading">Loading . . .</h3>
     if(this.state.noRecipesFound) {
       return (
         <Fragment>

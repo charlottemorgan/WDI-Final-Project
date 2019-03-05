@@ -87,7 +87,7 @@ class RecipeShow extends React.Component {
 
 
   render() {
-    if (!this.state) return <h3 className="title loading">Loading...</h3>
+    if (!this.state) return <h3 className="title loading">Loading . . .</h3>
     if (!Auth.isAuthenticated()) return <Redirect to={{pathname: '/login'}}/>
     console.log(this.state)
     return(
