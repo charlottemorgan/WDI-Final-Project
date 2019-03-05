@@ -118,8 +118,8 @@ class RecipeShow extends React.Component {
               <h5 className="title">Cooking Time:</h5><p>{this.state.recipe.totalTime} minutes</p>
             </div>
             <div className="column is-full show-columns">
-              <h5 className="title">Nutrition:</h5>
-              <ul><li>Calories:{Math.round(this.state.recipe.calories)}</li></ul>
+              <h5 className="title">Nutrition: </h5>
+              <ul><li>Calories: {Math.round(this.state.recipe.calories)} kcal</li></ul>
               <ul id="nutritionList">
                 {this.state.recipe.digest.slice(0,6).map((nutrient, i) =>
                   <li key={i}>{nutrient.label}: {Math.round(nutrient.total)} {nutrient.unit}</li>
@@ -132,11 +132,6 @@ class RecipeShow extends React.Component {
                 <button className="button">See full method</button>
               </a>
             </div>
-          </div>
-        </div>
-        <div className="container">
-          <div className="columns is-multiline is-variable is-4">
-
           </div>
         </div>
       </div>

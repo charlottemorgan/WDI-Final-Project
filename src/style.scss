@@ -1,5 +1,6 @@
-$column-gap: 1.25em;
-
+// $column-gap: 1.25em;
+$input-focus-border-color: white;
+$input-focus-box-shadow-color: white;
 @import "~bulma/bulma";
 @import url('https://fonts.googleapis.com/css?family=Staatliches');
 
@@ -137,6 +138,11 @@ h2.button {
 
 li {
   color: white;
+  font-size: 1.25em;
+}
+
+p {
+  font-size: 1.25em;  
 }
 
 figure.image {
