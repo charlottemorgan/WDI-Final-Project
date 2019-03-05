@@ -32,21 +32,25 @@ class ShoppingList extends React.Component {
       toggleItem,
       ...this.state.user.list.slice(index+1)
     ]
-    const user = { ...this.state.user, list }
+    const listSorted = list.sort((a , b) => {
+      if(a.checked && !b.checked) return 1
+      if(!a.checked && b.checked) return -1
+      return 0
+    })
+    const user = { ...this.state.user, list: listSorted }
     this.setState({ user })
   }
-
-
 
 
   render() {
     if(!this.state.user) return false
     return (
-      <div className="container">
+      <div className="container list">
+        <h2 className="title is-1">List</h2>
         <ul id="shoppingList">
           {this.state.user.list.map((item, i) =>
             <li
-              className={`${ this.state.user.list[i].checked ? 'checked':''}`}
+              className={`${ this.state.user.list[i].checked ? 'checked':''} list`}
               key={i}>{item.name}
               <div
                 onClick ={() => this.itemChecked(item)}

@@ -24,7 +24,7 @@ class Login extends React.Component {
       .post('/api/login', this.state.data)
       .then((res) => {
         Auth.setToken(res.data.token)
-        this.props.history.push('/recipes')
+        this.props.history.push(`${this.props.location.state && this.props.location.state.originPath ? this.props.location.state.originPath : '/recipes'}`)
       })
   }
 
@@ -37,35 +37,35 @@ class Login extends React.Component {
   render() {
     return(
       <div className="container">
-      <div className="columns">
-        <div className="column">
-          <form onSubmit={this.handleSubmit}>
-            <h2 className="title form">Login</h2>
-            <div className="field">
-              <label className="label">Email</label>
-              <input
-                className="input"
-                name="email"
-                placeholder="Email"
-                value={this.state.email}
-                onChange={this.handleChange}
-              />
-            </div>
-            <div className="field">
-              <label className="label">Password</label>
-              <input
-                className="input"
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.handleChange}
-              />
-            </div>
-            <button className="button">Log in</button>
-            <Link to={{pathname: '/register'}}><button className="button">Register</button></Link>
-          </form>
-        </div>
+        <div className="columns">
+          <div className="column">
+            <form onSubmit={this.handleSubmit}>
+              <h2 className="title form">Login</h2>
+              <div className="field">
+                <label className="label">Email</label>
+                <input
+                  className="input"
+                  name="email"
+                  placeholder="Email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <div className="field">
+                <label className="label">Password</label>
+                <input
+                  className="input"
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+              </div>
+              <button className="button">Log in</button>
+              <Link to={{pathname: '/register'}}><button className="button">Register</button></Link>
+            </form>
+          </div>
         </div>
       </div>
 

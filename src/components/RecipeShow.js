@@ -108,9 +108,9 @@ class RecipeShow extends React.Component {
           <div className="columns is-multiline">
             <div className="column is-full show-columns">
               <h4 className="title">Ingredients</h4>
-              <ul id="ingredientList">
+              <ul>
                 {this.state.recipe.ingredients.map((ingredient, i) =>
-                  <li key={i}>{ingredient.text}</li>
+                  <li className="ingredients" key={i}>{ingredient.text}</li>
                 )}
               </ul>
             </div>
@@ -119,10 +119,10 @@ class RecipeShow extends React.Component {
             </div>
             <div className="column is-full show-columns">
               <h5 className="title">Nutrition: </h5>
-              <ul><li>Calories: {Math.round(this.state.recipe.calories)} kcal</li></ul>
+              <ul><li className="ingredients">Calories: {Math.round(this.state.recipe.calories)} kcal</li></ul>
               <ul id="nutritionList">
                 {this.state.recipe.digest.slice(0,6).map((nutrient, i) =>
-                  <li key={i}>{nutrient.label}: {Math.round(nutrient.total)} {nutrient.unit}</li>
+                  <li className="ingredients" key={i}>{nutrient.label}: {Math.round(nutrient.total)} {nutrient.unit}</li>
                 )}
               </ul>
             </div>
