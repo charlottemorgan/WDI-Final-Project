@@ -47,8 +47,12 @@ class Home extends React.Component{
 
   render() {
     return(
-      <div className="hero">
+      <div className="hero is-large">
+        <div className="hero-body">
         <div className="container">
+        <h1 className="title">
+              DINE.
+        </h1>
           <div className="field has-addons">
             <div className="control is-expanded drop_down">
               <Select
@@ -82,10 +86,10 @@ class Home extends React.Component{
                 }}
                 onClick={() => this.savePreferences()}
               >
-                <h2>Show recipes</h2>
+                <h2 className="button">Show recipes</h2>
               </Link>
-              <button className='button' onClick={() => this.savePreferences()}>TEST</button>
             </div>
+          </div>
           </div>
         </div>
       </div>

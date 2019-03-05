@@ -94,12 +94,12 @@ class RecipeShow extends React.Component {
       <div>
         <header>
         </header>
-        <section className="hero is-medium" style={
+        <section className="hero is-large" style={
           { backgroundImage: `url(${this.state.recipe.image})`}
         }>
           <div className="hero-body">
             <div className="container">
-              <h1 className="title">{this.state.recipe.label}</h1>
+              <h1 className="recipe-title">{this.state.recipe.label}</h1>
             </div>
           </div>
         </section>

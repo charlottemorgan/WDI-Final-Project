@@ -35,11 +35,11 @@ class RecipesIndex extends React.Component {
 
   render() {
     console.log('STATE',this.state)
-    if(this.state.loading) return <h1 className="title">Loading...</h1>
+    if(this.state.loading) return <h3 className="title">Loading...</h3>
     if(this.state.noRecipesFound) {
       return (
         <Fragment>
-          <h1 className='title'>No recipes found for this combination</h1>
+          <h3 className='title no-combo'>No recipes found for this combination</h3>
           <Link className='button' to={{pathname: '/'}}>Choose new preferences</Link>
         </Fragment>
       )
