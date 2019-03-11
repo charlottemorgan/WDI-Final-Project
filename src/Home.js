@@ -87,32 +87,36 @@ class Home extends React.Component{
             </h1>
             <div className="field has-addons">
               <div className="control is-expanded drop_down">
-                <Select
-                  isMulti
-                  clearValue
-                  label="diet"
-                  name="diet"
-                  options={DietLabels}
-                  components={makeAnimated()}
-                  className="basic-multi-select"
-                  classNamePrefix="select"
-                  placeholder="Dietary Requirements"
-                  onChange={(value,input) => this.handleChange(value,input)}
-                  styles={customStyles}
-                />
-                <Select
-                  isMulti
-                  clearValue
-                  label="health"
-                  name="health"
-                  options={HealthLabels}
-                  components={makeAnimated()}
-                  className="basic-multi-select"
-                  classNamePrefix="select"
-                  placeholder="Health Requirements"
-                  onChange={(value,input) => this.handleChange(value,input)}
-                  styles={customStyles}
-                />
+                <div className="select-div">
+                  <Select
+                    isMulti
+                    clearValue
+                    label="diet"
+                    name="diet"
+                    options={DietLabels}
+                    components={makeAnimated()}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                    placeholder="Dietary Requirements"
+                    onChange={(value,input) => this.handleChange(value,input)}
+                    styles={customStyles}
+                  />
+                </div>
+                <div className="select-div">
+                  <Select
+                    isMulti
+                    clearValue
+                    label="health"
+                    name="health"
+                    options={HealthLabels}
+                    components={makeAnimated()}
+                    className="basic-multi-select"
+                    classNamePrefix="select"
+                    placeholder="Health Requirements"
+                    onChange={(value,input) => this.handleChange(value,input)}
+                    styles={customStyles}
+                  />
+                </div>
                 <Link
                   to ={{
                     pathname: '/recipes'
