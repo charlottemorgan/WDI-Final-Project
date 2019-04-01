@@ -11,55 +11,9 @@ class RecipeShow extends React.Component {
     super(props)
     this.state = {
       recipe: props.location.state.recipe,
-      amazonFreshHtml: {__html: ''},
       user: {}
     }
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  extractIngredientJsonFromRecipe(recipe) {
-    console.log('this recipe', recipe)
-
-    const result = JSON.stringify({
-      ingredients: recipe.ingredients.map(ingredient => {
-        console.log(ingredient)
-        const text = ingredient.text
-        const weight = ingredient.weight
-        return {
-          name: text,
-          quantityList: [
-            {
-              unit: 'KILOGRAMS',
-              amount: weight / 1000
-            }
-          ]
-
-        }
-      })
-    })
-    return result
-  }
-
-  testRequest(recipe) {
-    const ingredientJson = this.extractIngredientJsonFromRecipe((recipe))
-    // Make a request with json
-    const url = 'https://cors-anywhere.herokuapp.com/https://www.amazon.co.uk/afx/ingredients/landing'
-    const headers = {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-
-    console.log('ingredientJSON',ingredientJson)
-    axios({
-      method: 'post',
-      url,
-      data: ingredientJson,
-      headers
-    }).then(res => {
-      console.log('RESULT',res.data)
-
-      this.setState({amazonFreshHtml: {__html: res.data}}, () => console.log('STATE NOW', this.state))
-    })
-
   }
 
   componentDidMount() {
@@ -141,7 +95,3 @@ class RecipeShow extends React.Component {
 }
 
 export default RecipeShow
-
-// <button className="button" onClick={() => this.extractIngredientJsonFromRecipe(recipe)}>TEST JSON EXTRACTOR</button>
-// <button className="button" onClick={() => this.testRequest(recipe)}>TEST FRESH REQUEST</button>
-// <div dangerouslySetInnerHTML={this.state.amazonFreshHtml}></div>
